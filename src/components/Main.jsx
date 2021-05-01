@@ -12,7 +12,7 @@ const MainContent = () => {
   const { loading } = useSelector((store) => ({
     loading: store.weather.isLoading,
   }));
-  
+
   return loading ? (
     <CircularProgress />
   ) : (
