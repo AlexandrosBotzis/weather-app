@@ -4,7 +4,7 @@ import { Box, Card } from "@material-ui/core";
 
 import { makeStyles } from "@material-ui/core/styles";
 import WeatherContext from "../context/context";
-import { fetchWeatherFromApi } from "../store/actions/weather";
+import { fetchWeatherFromApi, setIsLoading } from "../store/actions/weather";
 import { getTemperature } from "../utils/unitConversion";
 
 const useStyles = makeStyles(() => ({
@@ -57,6 +57,7 @@ const DailyForecast = () => {
 
   useEffect(() => {
     if (navigator.geolocation) {
+      dispatch(setIsLoading({ isLoading: true }));
       navigator.geolocation.getCurrentPosition((data) => {
         dispatch(
           fetchWeatherFromApi({

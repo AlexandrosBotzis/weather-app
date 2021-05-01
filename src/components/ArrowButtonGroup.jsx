@@ -38,35 +38,38 @@ const ArrowButtonGroup = () => {
     return setSelectedCardIndex(index);
   };
 
-  const { length } = useSelector((state) => ({
+  const { length, isLoading } = useSelector((state) => ({
     length: state.weather.length,
+    isLoading: state.weather.isLoading,
   }));
 
   return (
-    <ButtonGroup
-      className={classes.arrowButtonsContainer}
-      size="large"
-      aria-label="button group"
-      fullWidth
-      orientation="horizontal"
-    >
-      <IconButton
-        onClick={() => onArrowClick("left")}
-        color="primary"
-        aria-label="left"
-        disabled={selectedCardIndex <= 0}
+    !isLoading && (
+      <ButtonGroup
+        className={classes.arrowButtonsContainer}
+        size="large"
+        aria-label="button group"
+        fullWidth
+        orientation="horizontal"
       >
-        <ArrowBackIosIcon />
-      </IconButton>
-      <IconButton
-        onClick={() => onArrowClick("right")}
-        color="primary"
-        aria-label="right"
-        disabled={selectedCardIndex >= length - 1}
-      >
-        <ArrowForwardIosIcon />
-      </IconButton>
-    </ButtonGroup>
+        <IconButton
+          onClick={() => onArrowClick("left")}
+          color="primary"
+          aria-label="left"
+          disabled={selectedCardIndex <= 0}
+        >
+          <ArrowBackIosIcon />
+        </IconButton>
+        <IconButton
+          onClick={() => onArrowClick("right")}
+          color="primary"
+          aria-label="right"
+          disabled={selectedCardIndex >= length - 1}
+        >
+          <ArrowForwardIosIcon />
+        </IconButton>
+      </ButtonGroup>
+    )
   );
 };
 

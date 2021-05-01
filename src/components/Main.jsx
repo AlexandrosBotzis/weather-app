@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, CircularProgress } from "@material-ui/core";
+import { Container, LinearProgress } from "@material-ui/core";
 import { useSelector } from "react-redux";
 import ArrowButtonGroup from "./ArrowButtonGroup";
 import BarChart from "./BarChart";
@@ -15,7 +15,7 @@ const MainContent = () => {
 
   return (
     <>
-      {isLoading && <CircularProgress />}
+      {isLoading && <LinearProgress />}
       <Container maxWidth="sm">
         <WeatherProvider>
           <RadioGroup />

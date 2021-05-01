@@ -63,9 +63,6 @@ const transformWeatherData = (res) => {
 
 export const fetchWeatherFromApi = ({ lat, long }) => (dispatch) => {
   dispatch(setWeatherStart());
-  dispatch(setIsLoading({ isLoading: true }));
-  // Promise.all([fetchWeatherData({ lat, long })])
-  //   .then((res) => Promise.all([res.data]))
   fetchWeatherData({ lat, long })
     .then((res) => {
       console.log({ res });

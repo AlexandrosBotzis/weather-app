@@ -4,8 +4,9 @@ import { Card } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 const Location = () => {
-  const { location } = useSelector((state) => ({
+  const { location, isLoading } = useSelector((state) => ({
     location: state.weather.location,
+    isLoading: state.weather.isLoading,
   }));
 
   const useStyles = makeStyles(() => ({
@@ -24,11 +25,13 @@ const Location = () => {
   const classes = useStyles();
 
   return (
-    <Card className={classes.card}>
-      <h3>
-        Weather in: {location && location.name},{location && location.country}
-      </h3>
-    </Card>
+    !isLoading && (
+      <Card className={classes.card}>
+        <h3>
+          Weather in: {location && location.name},{location && location.country}
+        </h3>
+      </Card>
+    )
   );
 };
 
