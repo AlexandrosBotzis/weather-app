@@ -7,7 +7,7 @@ export const Container = styled.div`
   justify-content: flex-end;
   max-width: 100%;
   @media (max-width: 425px) {
-    margin: 1.6rem 0 0 2.6rem;
+    margin: 1.6rem 0 0 1rem;
     height: 10rem;
   },
 `;

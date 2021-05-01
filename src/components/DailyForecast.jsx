@@ -23,7 +23,7 @@ const useStyles = makeStyles(() => ({
     "@media (max-width: 425px)": {
       padding: "0 0.5rem 0.5rem 0.5rem",
       "&:not(:last-child)": {
-        marginRight: "1.5rem",
+        marginRight: "1.2rem",
       },
     },
   },
@@ -44,7 +44,8 @@ const useStyles = makeStyles(() => ({
   },
   value: {
     fontWeight: "700",
-    fontSize: "1.2rem",
+    fontSize: "2rem",
+    marginTop: "0",
   },
 }));
 
