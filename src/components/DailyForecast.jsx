@@ -12,19 +12,36 @@ const useStyles = makeStyles(() => ({
   weatherContainer: {
     display: "flex",
     flexDirection: "row",
-    justifyContent: "space-evenly",
+    justifyContent: "space-between",
+    width: "100%",
   },
   weatherCard: {
-    padding: "0 2rem 2rem 2rem",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    padding: "0 1.6rem 1.6rem 1.6rem",
     border: "2px solid blue",
+    "@media (max-width: 425px)": {
+      padding: "0 0.5rem 0.5rem 0.5rem",
+      "&:not(:last-child)": {
+        marginRight: "1.5rem",
+      },
+    },
   },
   title: {
     fontWeight: "400",
-    fontSize: "1.2rem",
+    fontSize: "1.4rem",
     marginBottom: "1rem",
+    overflow: "auto",
+    "@media (max-width: 425px)": {
+      fontSize: "1rem",
+    },
   },
   subtitle: {
     fontSize: ".8rem",
+    "@media (max-width: 425px)": {
+      fontSize: "0.8rem",
+    },
   },
   value: {
     fontWeight: "700",

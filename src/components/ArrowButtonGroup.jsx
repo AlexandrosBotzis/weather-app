@@ -13,7 +13,6 @@ const useStyles = makeStyles(() => ({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
-    width: "35.5rem",
     "& svg": {
       height: "5rem",
       width: "5rem",
