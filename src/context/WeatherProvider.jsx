@@ -3,7 +3,6 @@ import WeatherContext from "./context";
 
 const WeatherProvider = ({ children }) => {
   const [isMetric, setIsMetric] = useState(false);
-  const [loading, setLoading] = useState(true);
   const [selectedCardIndex, setSelectedCardIndex] = useState(2);
 
   return (
@@ -11,8 +10,6 @@ const WeatherProvider = ({ children }) => {
       value={{
         isMetric,
         setIsMetric,
-        loading,
-        setLoading,
         selectedCardIndex,
         setSelectedCardIndex,
       }}

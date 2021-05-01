@@ -4,8 +4,8 @@ import { Card } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 const Location = () => {
-  const { location } = useSelector((store) => ({
-    location: store.weather.location,
+  const { location } = useSelector((state) => ({
+    location: state.weather.location,
   }));
 
   const useStyles = makeStyles(() => ({

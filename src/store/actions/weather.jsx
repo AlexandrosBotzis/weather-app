@@ -16,14 +16,14 @@ export const setWeatherStart = () => ({
   type: SET_WEATHER_START,
 });
 
-export const setIsLoading = (loading) => ({
+export const setIsLoading = (isLoading) => ({
   type: SET_IS_LOADING,
-  payload: loading,
+  payload: isLoading,
 });
 
-export const setWeatherSuccess = (weather) => ({
+export const setWeatherSuccess = (forecast) => ({
   type: SET_WEATHER_SUCCESS,
-  payload: { weather },
+  payload: { forecast },
 });
 
 export const setLocation = (location) => ({
@@ -63,10 +63,12 @@ const transformWeatherData = (res) => {
 
 export const fetchWeatherFromApi = ({ lat, long }) => (dispatch) => {
   dispatch(setWeatherStart());
-  // dispatch(setIsLoading(true));
-
+  dispatch(setIsLoading({ isLoading: true }));
+  // Promise.all([fetchWeatherData({ lat, long })])
+  //   .then((res) => Promise.all([res.data]))
   fetchWeatherData({ lat, long })
     .then((res) => {
+      console.log({ res });
       const { data } = res;
       const { city } = data;
       const groupedResults = _.groupBy(data.list, (result) =>
@@ -78,9 +80,25 @@ export const fetchWeatherFromApi = ({ lat, long }) => (dispatch) => {
       dispatch(setForecastLength(forecast.length));
     })
     .catch((err) => {
+      console.log(err);
       dispatch(setWeatherFail(err));
+    })
+    .finally(() => {
+      dispatch(setIsLoading({ isLoading: false }));
     });
-  // .finally(() => {
-  //   dispatch(setIsLoading(false));
-  // })
 };
+
+// Promise.all([fetchWeatherData(city), fetchExtendedForecastData(city)])
+// .then((res) => {
+//   return Promise.all([res[0].json(), res[1].json()]);
+// })
+// .then((res) => {
+//   const { forecast, weather } = transformWeatherData(res);
+//   dispatch(fetchWeatherSuccess(weather, forecast));
+//   dispatch(setIsInitialState(false));
+//   dispatch(setIsLoading(false));
+// })
+// .catch((err) => {
+//   dispatch(fetchWeatherFail(err));
+//   dispatch(setIsLoading(false));
+// });

@@ -38,8 +38,8 @@ const ArrowButtonGroup = () => {
     return setSelectedCardIndex(index);
   };
 
-  const { length } = useSelector((store) => ({
-    length: store.weather.length,
+  const { length } = useSelector((state) => ({
+    length: state.weather.length,
   }));
 
   return (

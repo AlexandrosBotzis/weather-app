@@ -1,8 +1,8 @@
 const initialState = {
-  weather: {
-    weatherData: [],
-    isLoading: false,
-  },
+  forecast: [],
+  location: [],
+  isError: false,
+  isLoading: false,
 };
 
 export default initialState;

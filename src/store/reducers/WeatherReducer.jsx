@@ -15,7 +15,7 @@ const WeatherReducer = (state = initialState, action) => {
     case SET_WEATHER_SUCCESS:
       return {
         ...state,
-        weatherData: action.payload.weather,
+        forecast: action.payload.forecast,
       };
     case SET_LOCATION:
       return {
@@ -25,7 +25,7 @@ const WeatherReducer = (state = initialState, action) => {
     case SET_IS_LOADING:
       return {
         ...state,
-        isLoading: action.payload,
+        isLoading: action.payload.isLoading,
       };
     case SET_FORECAST_LENGTH:
       return {

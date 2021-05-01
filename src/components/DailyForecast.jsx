@@ -6,7 +6,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import WeatherContext from "../context/context";
 import { fetchWeatherFromApi } from "../store/actions/weather";
 import { getTemperature } from "../utils/unitConversion";
-// import useFetchHook from "../Hooks/FetchHook";
 
 const useStyles = makeStyles(() => ({
   weatherContainer: {
@@ -68,10 +67,11 @@ const DailyForecast = () => {
     }
   }, [dispatch]);
 
-  const { weather, length, isError } = useSelector((store) => ({
-    weather: store.weather.weatherData,
-    length: store.weather.length,
-    isError: store.weather.isError,
+  const { forecast, length, isError, isLoading } = useSelector((state) => ({
+    forecast: state.weather.forecast,
+    length: state.weather.length,
+    isError: state.weather.isError,
+    isLoading: state.weather.isLoading,
   }));
 
   useEffect(() => {
@@ -100,8 +100,8 @@ const DailyForecast = () => {
 
   return (
     <Box className={classes.weatherContainer}>
-      {weather &&
-        weather.map(
+      {forecast &&
+        forecast.map(
           (value, idx) =>
             isVisible(idx) && (
               <Card

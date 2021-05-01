@@ -14,14 +14,14 @@ import {
 const BarChart = () => {
   const { isMetric, selectedCardIndex } = useContext(WeatherContext);
 
-  const { weather } = useSelector((store) => ({
-    weather: store.weather.weatherData,
+  const { forecast } = useSelector((state) => ({
+    forecast: state.weather.forecast,
   }));
 
   const daily =
-    weather &&
-    weather.length > 0 &&
-    weather.find((item) => item.id === selectedCardIndex).threeHour;
+    forecast &&
+    forecast.length > 0 &&
+    forecast.find((item) => item.id === selectedCardIndex).threeHour;
 
   return (
     <Container>
