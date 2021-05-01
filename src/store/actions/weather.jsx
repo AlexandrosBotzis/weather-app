@@ -6,6 +6,7 @@ import { kelvinToFahrenheit } from "../../utils/unitConversion";
 import {
   SET_WEATHER_START,
   SET_WEATHER_SUCCESS,
+  SET_LOCATION,
   SET_WEATHER_ERROR,
   SET_FORECAST_LENGTH,
   SET_IS_LOADING,
@@ -23,6 +24,11 @@ export const setIsLoading = (loading) => ({
 export const setWeatherSuccess = (weather) => ({
   type: SET_WEATHER_SUCCESS,
   payload: { weather },
+});
+
+export const setLocation = (location) => ({
+  type: SET_LOCATION,
+  payload: { location },
 });
 
 export const setForecastLength = (length) => ({
@@ -62,15 +68,16 @@ export const fetchWeatherFromApi = ({ lat, long }) => (dispatch) => {
   fetchWeatherData({ lat, long })
     .then((res) => {
       const { data } = res;
+      const { city } = data;
       const groupedResults = _.groupBy(data.list, (result) =>
         moment(result.dt_txt).startOf("day").format("YYYY-MM-DD")
       );
       const forecast = transformWeatherData(groupedResults);
       dispatch(setWeatherSuccess(forecast));
+      dispatch(setLocation(city));
       dispatch(setForecastLength(forecast.length));
     })
     .catch((err) => {
-      console.log("err ===> ", err);
       dispatch(setWeatherFail(err));
     });
   // .finally(() => {

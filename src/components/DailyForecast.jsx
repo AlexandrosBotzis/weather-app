@@ -20,7 +20,7 @@ const useStyles = makeStyles(() => ({
     flexDirection: "column",
     alignItems: "center",
     padding: "0 1.6rem 1.6rem 1.6rem",
-    border: "2px solid blue",
+    border: "0.2rem solid",
     "@media (max-width: 425px)": {
       padding: "0 0.5rem 0.5rem 0.5rem",
       "&:not(:last-child)": {
@@ -38,7 +38,7 @@ const useStyles = makeStyles(() => ({
     },
   },
   subtitle: {
-    fontSize: ".8rem",
+    fontSize: "0.8rem",
     "@media (max-width: 425px)": {
       fontSize: "0.8rem",
     },
@@ -108,7 +108,7 @@ const DailyForecast = () => {
                 className={classes.weatherCard}
                 elevation={isSelected(idx) ? 8 : 4}
                 style={{
-                  borderColor: isSelected(idx) ? "lightblue" : "white",
+                  borderColor: isSelected(idx) ? "#6495ed" : "#fff",
                   opacity: isSelected(idx) ? "1" : "0.4",
                 }}
               >

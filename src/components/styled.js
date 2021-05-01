@@ -32,7 +32,7 @@ export const BarChartContainer = styled.div`
 
 export const Bar = styled.div`
   height: ${(props) => props.height}%;
-  background-color: lightblue;
+  background-color: #6495ed;
   margin-top: 1rem;
   width: 2.4rem;
   box-shadow: 0 0 0.5rem black;

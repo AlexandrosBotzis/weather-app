@@ -6,12 +6,13 @@ import BarChart from "./BarChart";
 import DailyForecast from "./DailyForecast";
 import RadioGroup from "./RadioGroup";
 import WeatherProvider from "../context/WeatherProvider";
+import Location from "./Location";
 
 const MainContent = () => {
   const { loading } = useSelector((store) => ({
     loading: store.weather.isLoading,
   }));
-
+  
   return loading ? (
     <CircularProgress />
   ) : (
@@ -19,6 +20,7 @@ const MainContent = () => {
       <WeatherProvider>
         <RadioGroup />
         <ArrowButtonGroup />
+        <Location />
         <DailyForecast />
         <BarChart />
       </WeatherProvider>

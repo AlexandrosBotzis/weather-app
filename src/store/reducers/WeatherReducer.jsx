@@ -1,6 +1,7 @@
 import {
   SET_WEATHER_START,
   SET_WEATHER_SUCCESS,
+  SET_LOCATION,
   SET_FORECAST_LENGTH,
   SET_WEATHER_ERROR,
   SET_IS_LOADING,
@@ -15,6 +16,11 @@ const WeatherReducer = (state = initialState, action) => {
       return {
         ...state,
         weatherData: action.payload.weather,
+      };
+    case SET_LOCATION:
+      return {
+        ...state,
+        location: action.payload.location,
       };
     case SET_IS_LOADING:
       return {
