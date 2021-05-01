@@ -67,11 +67,10 @@ const DailyForecast = () => {
     }
   }, [dispatch]);
 
-  const { forecast, length, isError, isLoading } = useSelector((state) => ({
+  const { forecast, length, isError } = useSelector((state) => ({
     forecast: state.weather.forecast,
     length: state.weather.length,
     isError: state.weather.isError,
-    isLoading: state.weather.isLoading,
   }));
 
   useEffect(() => {
