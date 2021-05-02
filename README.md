@@ -1,44 +1,55 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+## Description
+
+This project is a weather application built with [ReactJS](https://reactjs.org/) & [Redux](https://redux.js.org/). <br />
+Displays a Linear loading indicator upon starting the project until it fetches weather data
+from [Open Weather](https://openweathermap.org/) using [5 day weather API](https://openweathermap.org/forecast5).
+
+After the successful data fetching, user is able to navigate in the forecast of 5 upcoming days using <br />
+the navigation buttons. When a weather card is selected a bar chart is visible indicating the 3-hour temperature 
+forecast for the selected day.
+
+The design has been optimized for mobile devices. In lower screen resolutions the bar chart is
+converted to a horizontal bar chart ( column chart ) to provide a better user experience.
+
+You can try in 
+[Weather Application Live Preview](alexandrosbotzis.github.io/weather-app/)
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+```bash
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+npm install
+# install dependencies
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+npm start
+# Runs the Webpack server in the development mode.
 
-### `npm test`
+npm test
+# Launches the test runner in the interactive watch mode.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+npm run build
+# Builds the app for production to the `dist` folder.
 
-### `npm run build`
+npm run prettier:fix
+# Formats the code using the code quality & stylistic rules.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+npm run deploy
+# Runs the above mentioned build command and deploys the
+# `dist` folder to GitHub pages.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Architecture
 
-### `npm run eject`
+Application uses Redux for state management, [redux-thunk](https://github.com/reduxjs/redux-thunk) as a Redux middleware, and [React Hooks](https://reactjs.org/docs/hooks-intro.html).
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Data are being fetched using [axios](https://github.com/axios/axios) HTTP client.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Components have been built using [Material UI Components](https://material-ui.com/) and specificaly BarChart component has
+been built using [Styled components](https://styled-components.com/).
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Build artifacts have been generated using [Webpack](https://github.com/webpack/webpack) bundler.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Other libraries used such as [lodash](https://lodash.com/) & [moment](https://momentjs.com/).
