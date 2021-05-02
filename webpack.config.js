@@ -9,7 +9,7 @@ module.exports = {
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/weather-app/',
+    publicPath: process.env.REACT_APP_PUBLIC_URL,
   },
   devServer: {
     compress: true,
