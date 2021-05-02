@@ -1,8 +1,8 @@
 import _ from "lodash";
 import moment from "moment";
 import "moment/locale/de";
-import fetchWeatherData from "../../api/weather";
-import { kelvinToFahrenheit } from "../../utils/unitConversion";
+import fetchWeatherData from "../api/weather";
+import { kelvinToFahrenheit } from "../utils/unitConversion";
 import {
   SET_WEATHER_START,
   SET_WEATHER_SUCCESS,
@@ -10,7 +10,7 @@ import {
   SET_WEATHER_ERROR,
   SET_FORECAST_LENGTH,
   SET_IS_LOADING,
-} from "../types";
+} from "./types";
 
 export const setWeatherStart = () => ({
   type: SET_WEATHER_START,
@@ -65,7 +65,6 @@ export const fetchWeatherFromApi = ({ lat, long }) => (dispatch) => {
   dispatch(setWeatherStart());
   fetchWeatherData({ lat, long })
     .then((res) => {
-      console.log({ res });
       const { data } = res;
       const { city } = data;
       const groupedResults = _.groupBy(data.list, (result) =>
@@ -77,25 +76,9 @@ export const fetchWeatherFromApi = ({ lat, long }) => (dispatch) => {
       dispatch(setForecastLength(forecast.length));
     })
     .catch((err) => {
-      console.log(err);
       dispatch(setWeatherFail(err));
     })
     .finally(() => {
       dispatch(setIsLoading({ isLoading: false }));
     });
 };
-
-// Promise.all([fetchWeatherData(city), fetchExtendedForecastData(city)])
-// .then((res) => {
-//   return Promise.all([res[0].json(), res[1].json()]);
-// })
-// .then((res) => {
-//   const { forecast, weather } = transformWeatherData(res);
-//   dispatch(fetchWeatherSuccess(weather, forecast));
-//   dispatch(setIsInitialState(false));
-//   dispatch(setIsLoading(false));
-// })
-// .catch((err) => {
-//   dispatch(fetchWeatherFail(err));
-//   dispatch(setIsLoading(false));
-// });

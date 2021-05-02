@@ -2,7 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
-import WeatherReducer from "./reducers/WeatherReducer";
+import WeatherReducer from "./reducer";
 import initialState from "./state";
 
 const rootReducer = combineReducers({

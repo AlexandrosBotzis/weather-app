@@ -4,7 +4,7 @@ import { Box, Card } from "@material-ui/core";
 
 import { makeStyles } from "@material-ui/core/styles";
 import WeatherContext from "../context/context";
-import { fetchWeatherFromApi, setIsLoading } from "../store/actions/weather";
+import { fetchWeatherFromApi, setIsLoading } from "../store/actions";
 import { getTemperature } from "../utils/unitConversion";
 
 const useStyles = makeStyles(() => ({
@@ -69,17 +69,10 @@ const DailyForecast = () => {
     }
   }, [dispatch]);
 
-  const { forecast, length, isError } = useSelector((state) => ({
+  const { forecast, length } = useSelector((state) => ({
     forecast: state.weather.forecast,
     length: state.weather.length,
-    isError: state.weather.isError,
   }));
-
-  useEffect(() => {
-    if (isError) {
-      console.log("Cannot load weather for this place");
-    }
-  }, [isError]);
 
   const isSelected = (index) => index === selectedCardIndex;
 

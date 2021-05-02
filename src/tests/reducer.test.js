@@ -1,9 +1,9 @@
-import { initialState } from '../state';
-import WeatherReducer from './WeatherReducer';
+import { initialState } from '../store/state';
+import reducer from '../store/reducer';
 
 describe('weather reducer', () => {
     it('should have empty initial state', () => {
-        const state = WeatherReducer(initialState, { type: "SET_WEATHER_START" });
+        const state = reducer(initialState, { type: "SET_WEATHER_START" });
         expect(state).toEqual({
             ...initialState,
             forecast: [],
@@ -19,7 +19,7 @@ describe('weather reducer', () => {
             date: "01.01.2021",
         };
 
-        const state = WeatherReducer(initialState, {
+        const state = reducer(initialState, {
             type: "SET_WEATHER_SUCCESS",
             payload: {forecast: [weatherObject]}
         });
@@ -37,7 +37,7 @@ describe('weather reducer', () => {
             city: "Los Angeles",
             country: "US",
         }
-        const state = WeatherReducer(initialState, {
+        const state = reducer(initialState, {
             type: "SET_LOCATION",
             payload: {location: [locationData]}
         });
@@ -51,7 +51,7 @@ describe('weather reducer', () => {
     });
 
     it('should set loading state', () => {
-        const state = WeatherReducer(initialState, {
+        const state = reducer(initialState, {
             type: "SET_IS_LOADING",
             payload: {isLoading: true}
         });
@@ -65,7 +65,7 @@ describe('weather reducer', () => {
     });
     
     it('handle failure while fetching weather data', () => {
-        const state = WeatherReducer(initialState, {
+        const state = reducer(initialState, {
             type: "SET_WEATHER_ERROR",
             payload: {error: []}
         });

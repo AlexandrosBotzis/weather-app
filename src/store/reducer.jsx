@@ -5,8 +5,8 @@ import {
   SET_FORECAST_LENGTH,
   SET_WEATHER_ERROR,
   SET_IS_LOADING,
-} from "../types";
-import initialState from "../state";
+} from "./types";
+import initialState from "./state";
 
 const WeatherReducer = (state = initialState, action) => {
   switch (action.type) {

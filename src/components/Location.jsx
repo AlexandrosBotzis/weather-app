@@ -28,7 +28,8 @@ const Location = () => {
     !isLoading && (
       <Card className={classes.card}>
         <h3>
-          Weather in: {location && location.name},{location && location.country}
+          Weather in: {location && location.name},{" "}
+          {location && location.country}
         </h3>
       </Card>
     )
