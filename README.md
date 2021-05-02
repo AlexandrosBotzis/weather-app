@@ -25,6 +25,9 @@ npm install
 # install dependencies
 
 npm start
+# Stars the local server.
+
+npm run webpack:dev
 # Runs the Webpack server in the development mode.
 
 npm test

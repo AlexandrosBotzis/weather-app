@@ -46,7 +46,8 @@
     "webpack-dev-server": "^3.11.2"
   },
   "scripts": {
-    "start": "webpack serve",
+    "start": "react-scripts start",
+    "webpack:dev": "webpack serve",
     "build": "webpack --mode production",
     "deploy": "npm run build && gh-pages -d dist",
     "test": "react-scripts test",

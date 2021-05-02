@@ -1,6 +1,5 @@
 import _ from "lodash";
 import moment from "moment";
-import "moment/locale/de";
 import fetchWeatherData from "../api/weather";
 import { kelvinToFahrenheit } from "../utils/unitConversion";
 import {
@@ -49,7 +48,7 @@ const transformWeatherData = (res) => {
   Object.keys(res).map((item, index) =>
     forecast.push({
       id: index,
-      date: moment(item).locale("de").format("LL"),
+      date: moment(item).format("LL"),
       threeHour: res[item].map((threeHourTemp) => ({
         hour: moment(threeHourTemp.dt_txt).format("HH:mm"),
         temp: kelvinToFahrenheit(threeHourTemp.main.temp),
