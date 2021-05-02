@@ -24,10 +24,7 @@ In the project directory, you can run:
 npm install
 # install dependencies
 
-npm start
-# Stars the local server.
-
-npm run webpack:dev
+npm run dev
 # Runs the Webpack server in the development mode.
 
 npm test
