@@ -27,8 +27,8 @@ const BarChart = () => {
     <Container>
       <InnerContainer>
         {daily &&
-          daily.map((item) => (
-            <BarChartContainer>
+          daily.map((item, idx) => (
+            <BarChartContainer key={idx}>
               <Temperature>
                 {getTemperature(item.temp, isMetric, true)}
               </Temperature>
